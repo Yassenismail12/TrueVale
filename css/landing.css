@@ -1,0 +1,113 @@
+/* ========================================
+   TrueVale Landing Page Styles
+   File: landing.css
+   ======================================== */
+
+/* ---------- Hero Section ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-lg);
+  min-height: 80vh;
+}
+
+.hero-text h1 {
+  font-size: var(--fs-xxl);
+  margin-bottom: var(--space-md);
+}
+
+.hero-text h1 span {
+  color: var(--color-primary);
+}
+
+.hero-text p {
+  font-size: var(--fs-md);
+  margin-bottom: var(--space-md);
+}
+
+.hero-ctas {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.hero-img {
+  position: relative;
+}
+
+.hero-img .main {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.hero-img .side-top,
+.hero-img .side-bottom {
+  position: absolute;
+  width: 40%;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.hero-img .side-top {
+  top: 10%;
+  right: -15%;
+}
+
+.hero-img .side-bottom {
+  bottom: 10%;
+  right: -15%;
+}
+
+.hero-img .badge {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  background: var(--color-secondary);
+  color: var(--color-light);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+}
+
+/* ---------- Exclusives Section ---------- */
+.exclusives h2 {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+/* ---------- Explore Section ---------- */
+.explore h2 {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+/* Already styled grid/cards in components.css */
+
+/* ---------- Seller CTA ---------- */
+.seller-cta {
+  text-align: center;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: var(--color-light);
+  padding: var(--space-xl) var(--space-sm);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.seller-cta h2 {
+  font-size: var(--fs-xl);
+  margin-bottom: var(--space-md);
+}
+
+.seller-cta p {
+  margin-bottom: var(--space-md);
+  color: var(--color-light);
+  font-size: var(--fs-md);
+}
+
+/* ---------- Footer ---------- */
+.footer p.text-center {
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: #ccc;
+}
