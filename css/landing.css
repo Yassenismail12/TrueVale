@@ -1,0 +1,254 @@
+/* css/landing.css
+   Refined styles to match the provided Landing.png (hero collage, circular exclusives,
+   masonry-like explore grid, strong spacing, larger typography, CTA styling, footer).
+   Include this AFTER your other CSS files so it overrides earlier rules.
+*/
+
+/* Fonts (use existing variable but ensure fonts are loaded in HTML) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Nunito:wght@400;600&display=swap');
+
+:root{
+  --hero-height: 620px;
+}
+
+/* --------- Global tweaks for landing page --------- */
+.container {
+  width: 92%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* typography scale for landing */
+h1, h2, h3 { font-family: 'Poppins', var(--font-main); color: var(--color-dark); }
+p, a, li { font-family: 'Nunito', var(--font-alt); }
+
+/* --------- Navbar refinements --------- */
+.navbar {
+  padding: 1rem 0;
+  background: var(--color-white);
+  align-items: center;
+  gap: 1rem;
+}
+.logo {
+  font-size: 1.375rem;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+  font-weight: 800;
+}
+
+/* compact nav items - hide on very small screens */
+.navbar nav ul { gap: 1.25rem; align-items:center; }
+.navbar .search-bar { max-width: 420px; width: 100%; margin-left: 1rem; }
+
+/* Icon sizes */
+.navbar .bi { font-size: 1.25rem; color: var(--color-dark); }
+
+/* --------- Hero: left-text / right-collage --------- */
+.hero {
+  padding: 3.5rem 0;
+  min-height: var(--hero-height);
+  display: flex;
+  align-items: center;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfcfd 100%);
+}
+
+.hero .container {
+  display: grid;
+  grid-template-columns: 1fr 560px;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+/* Left column text */
+.hero-text h1 {
+  font-size: 3.25rem;
+  line-height: 1.03;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+.hero-text h1 span {
+  color: var(--color-primary);
+}
+.hero-text p {
+  font-size: 1.0625rem;
+  color: #606060;
+  margin-bottom: 1.25rem;
+  max-width: 520px;
+}
+
+/* CTA cluster */
+.hero-text .ctas {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.btn-hero {
+  padding: 0.875rem 1.4rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+}
+.btn-hero.primary { background: var(--color-primary); color: #fff; box-shadow: 0 8px 18px rgba(42,166,162,0.12); }
+.btn-hero.ghost { background: transparent; border: 1.5px solid rgba(44,44,44,0.08); color: var(--color-dark); }
+
+/* Right column: collage */
+.hero-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-collage {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 420px;
+}
+.hero-collage img {
+  position: absolute;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(10,10,10,0.08);
+  object-fit: cover;
+}
+
+/* place images to mimic Figma collage */
+.hero-collage .main {
+  left: 50px;
+  top: 20px;
+  width: 62%;
+  height: 82%;
+}
+.hero-collage .side-top {
+  right: 0;
+  top: -10px;
+  width: 38%;
+  height: 44%;
+  transform: rotate(-2deg);
+  border-radius: 12px;
+}
+.hero-collage .side-bottom {
+  right: -10px;
+  bottom: -10px;
+  width: 42%;
+  height: 48%;
+  transform: rotate(3deg);
+  border-radius: 12px;
+}
+
+/* small badge overlay on collage */
+.hero-collage .badge {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 6px 18px rgba(10,10,10,0.06);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* --------- Exclusives (circular images) --------- */
+.exclusives {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.exclusives .grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  align-items: center;
+}
+.exclusives .card {
+  text-align: center;
+  background: transparent;
+  box-shadow: none;
+}
+.exclusives .card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 999px;
+  border: 6px solid #fff;
+  box-shadow: 0 8px 20px rgba(10,10,10,0.07);
+  margin: 0 auto 0.75rem;
+}
+.exclusives .card p { font-weight:700; color: #333; }
+
+/* --------- Explore (masonry-like arrangement) --------- */
+.explore .grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-auto-rows: minmax(160px, auto);
+  gap: 1rem;
+}
+.explore .grid .big {
+  grid-row: span 2;
+  height: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.explore .grid .small-top,
+.explore .grid .small-bottom {
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.explore .card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* overlay titles on explore cards */
+.explore .card .overlay {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.45);
+}
+
+/* --------- Seller CTA polished --------- */
+.seller-cta {
+  margin: 2.25rem auto;
+  padding: 2.25rem;
+  border-radius: 18px;
+  background: linear-gradient(90deg, rgba(42,166,162,1) 0%, rgba(247,165,49,0.95) 100%);
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(42,166,162,0.12);
+}
+.seller-cta h2 { font-size: 1.75rem; margin-bottom: 0.5rem; font-weight:800; }
+.seller-cta p { opacity: 0.95; margin-bottom: 1rem; }
+
+/* --------- Footer adjustments --------- */
+.footer {
+  background: linear-gradient(180deg, #222 0%, #111 100%);
+  color: #cfd8dc;
+  padding: 3rem 0 2rem;
+}
+.footer .grid { gap: 2rem; margin-bottom: 1.25rem; }
+.footer a { color: #d6d6d6; }
+.footer p { color: #9aa0a6; margin-top: 1rem; }
+
+/* --------- Small screens: stack & adjust spacing --------- */
+@media (max-width: 980px) {
+  .hero .container { grid-template-columns: 1fr; grid-auto-rows: auto; text-align:center; }
+  .hero-collage { max-width: 360px; margin: 0 auto; height: 360px; }
+  .hero-text h1 { font-size: 2.25rem; }
+  .exclusives .grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .explore .grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 2rem 0; min-height: 520px; }
+  .hero-text h1 { font-size: 1.9rem; }
+  .hero-text p { font-size: 0.98rem; }
+  .hero-collage { height: 320px; }
+  .exclusives .card img { width: 96px; height: 96px; border-width: 5px; }
+}

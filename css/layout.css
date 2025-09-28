@@ -1,0 +1,36 @@
+/* Flexbox helpers */
+.flex {
+  display: flex;
+  gap: var(--space-sm);
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Grid helpers */
+.grid {
+  display: grid;
+  gap: var(--space-sm);
+}
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Section spacing */
+.section {
+  padding: var(--space-lg) 0;
+}
+

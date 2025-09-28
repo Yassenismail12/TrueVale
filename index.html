@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrueVale - Shopping Became Smarter</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-teal: #00BCD4;
+            --primary-orange: #FF8A65;
+            --text-dark: #2C2C2C;
+            --text-light: #666;
+            --bg-light: #F5F5F5;
+            --white: #FFFFFF;
+            --border-light: #E0E0E0;
+            --gradient-hero: linear-gradient(135deg, #FF8A65 0%, #00BCD4 100%);
+            --gradient-green: linear-gradient(135deg, #4CAF50 0%, #81C784 100%);
+            --gradient-mint: linear-gradient(135deg, #26A69A 0%, #80CBC4 100%);
+            --gradient-orange: linear-gradient(135deg, #FF7043 0%, #FFAB40 100%);
+            --gradient-purple: linear-gradient(135deg, #9C27B0 0%, #CE93D8 100%);
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-teal);
+            text-decoration: none;
+        }
+
+        .logo i {
+            margin-right: 8px;
+            font-size: 28px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-teal);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-actions i {
+            font-size: 20px;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .nav-actions i:hover {
+            color: var(--primary-teal);
+        }
+
+        .account-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('./assets/images/Hero.png');
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 50px;
+            width: 100%;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-text .highlight {
+            color: var(--text-dark);
+            font-weight: 900;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 15px;
+        }
+
+        /* Sections */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: var(--text-dark);
+            background: var(--white);
+            padding: 15px 40px;
+            border-radius: 50px;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .section-title-container {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        /* Exclusives Section */
+        .exclusives {
+            background: var(--bg-light);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .category-card {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .category-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            background: var(--gradient-mint);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .category-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* Explore Section */
+        .explore {
+            background: var(--white);
+        }
+
+        .explore-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 300px 200px;
+            gap: 20px;
+            height: 520px;
+        }
+
+        .explore-card {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .explore-card:hover {
+            transform: scale(1.02);
+        }
+
+        .explore-card.back-to-school {
+            background: var(--gradient-mint);
+            grid-row: 1 / 3;
+        }
+
+        .explore-card.hungry {
+            background: var(--gradient-orange);
+        }
+
+        .explore-card.autumn {
+            background: var(--gradient-purple);
+        }
+
+        .explore-card.discounts {
+            background: var(--gradient-orange);
+            grid-column: 1 / 3;
+        }
+
+        .card-content {
+            text-align: center;
+            color: var(--white);
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+        }
+
+        .card-content.small h3 {
+            font-size: 2rem;
+        }
+
+        /* Seller Section */
+        .seller-section {
+            background: var(--bg-light);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .seller-content h2 {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--primary-orange);
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .seller-btn {
+            background: var(--primary-teal);
+            color: var(--white);
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .seller-btn:hover {
+            background: var(--primary-orange);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 50px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-teal);
+            margin-bottom: 20px;
+        }
+
+        .footer-brand i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+
+        .footer-section h4 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary-teal);
+        }
+
+        .footer-section .trueval {
+            color: var(--primary-teal);
+            font-weight: 600;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: var(--text-light);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .explore-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, 200px);
+                height: auto;
+            }
+            
+            .explore-card.back-to-school,
+            .explore-card.discounts {
+                grid-column: 1;
+                grid-row: auto;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .seller-content h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Placeholder Images */
+        .category-image.cosmetics { background: linear-gradient(135deg, #FF9800 0%, #FFC107 100%); }
+        .category-image.mobile { background: linear-gradient(135deg, #607D8B 0%, #90A4AE 100%); }
+        .category-image.fashion { background: linear-gradient(135deg, #E91E63 0%, #F06292 100%); }
+        .category-image.lifestyle { background: linear-gradient(135deg, #9C27B0 0%, #BA68C8 100%); }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="#" class="logo">
+                <i class="bi bi-bag-check-fill"></i>
+                TrueVal
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#categories">Categories <i class="bi bi-chevron-down"></i></a></li>
+                <li><a href="#deals">Deals</a></li>
+                <li><a href="#bestsellers">BestSellers</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <i class="bi bi-mic-fill"></i>
+                <i class="bi bi-search"></i>
+                <a href="#" class="account-btn">
+                    <i class="bi bi-person-circle"></i>
+                    Account
+                </a>
+                <i class="bi bi-cart3"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>
+                        Shopping<br>
+                        Became<br>
+                        <span class="highlight">SMARTER</span>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exclusives Section -->
+    <section class="section exclusives">
+        <div class="container">
+            <div class="section-title-container">
+                <h2 class="section-title">Exclusives</h2>
+            </div>
+            
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-image cosmetics">
+                        <div style="color: white; font-size: 16px; text-align: center;">Cosmetics</div>
+                    </div>
+                    <h3 class="category-name">Cosmetics</h3>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image mobile">
+                        <div style="color: white; font-size: 16px; text-align: center;">Mobile</div>
+                    </div>
+                    <h3 class="category-name">Mobile Phones</h3>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image fashion">
+                        <div style="color: white; font-size: 16px; text-align: center;">Fashion</div>
+                    </div>
+                    <h3 class="category-name">Fashion</h3>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image lifestyle">
+                        <div style="color: white; font-size: 16px; text-align: center;">Lifestyle</div>
+                    </div>
+                    <h3 class="category-name">Lifestyle</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explore Section -->
+    <section class="section explore">
+        <div class="container">
+            <div class="section-title-container">
+                <h2 class="section-title">Explore</h2>
+            </div>
+            
+            <div class="explore-grid">
+                <div class="explore-card back-to-school">
+                    <div class="card-content">
+                        <h3>Back<br>To<br>Schools</h3>
+                    </div>
+                </div>
+                
+                <div class="explore-card hungry">
+                    <div class="card-content small">
+                        <h3>Hungry?</h3>
+                    </div>
+                </div>
+                
+                <div class="explore-card autumn">
+                    <div class="card-content small">
+                        <h3>Autumn</h3>
+                    </div>
+                </div>
+                
+                <div class="explore-card discounts">
+                    <div class="card-content">
+                        <h3>Discounts</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seller Section -->
+    <section class="seller-section">
+        <div class="container">
+            <div class="seller-content">
+                <h2>Sell Here</h2>
+                <a href="#" class="seller-btn">Become a Seller</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="bi bi-bag-check-fill"></i>
+                        TrueVal
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>About us</h4>
+                    <ul>
+                        <li><a href="#">About <span class="trueval">TrueVal</span></a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Coperators</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Help</h4>
+                    <ul>
+                        <li><a href="#"><span class="trueval">TrueVal</span> Help</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Legacy & Terms</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#"><span class="trueval">TrueVal</span> Stores</a></li>
+                        <li><a href="#"><span class="trueval">TrueVal</span> Solutions</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>All rights reserved ©TrueVal 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Basic interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Add hover effects for cards
+            const cards = document.querySelectorAll('.category-card, .explore-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add click handlers for navigation
+            document.querySelectorAll('.nav-actions i, .account-btn').forEach(element => {
+                element.addEventListener('click', function() {
+                    console.log('Navigation clicked:', this);
+                    // Add navigation logic here
+                });
+            });
+        });
+    </script>
+</body>
+</html>
