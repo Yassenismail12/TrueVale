@@ -1,0 +1,25 @@
+/* Exclusives Section Styles */
+
+.exclusives-section {
+    background-color: var(--color-bg-secondary);
+    padding: var(--spacing-5xl) 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .exclusives-section {
+        padding: var(--spacing-4xl) 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .exclusives-section {
+        padding: var(--spacing-3xl) 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .exclusives-section {
+        padding: var(--spacing-2xl) 0;
+    }
+}   
