@@ -4,6 +4,7 @@
     --accent-color: #ff9800;
     --text-dark: #222;
     --text-light: #666;
+    --text: #ffffff;
     --white: #ffffff;
     --bg-light: #f0f8ff;
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -11,4 +12,19 @@
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
     --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --navbar-height: 72px;
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+    --primary-color: #57c4c0;
+    --secondary-color: #0a5b6e;
+    --accent-color: #ffb347;
+    --text-dark: #e8e8e8;
+    --text-light: #b0b0b0;
+    --text : #e8e8e8;
+    --white: #1a1a1a;
+    --bg-light: #121212;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
