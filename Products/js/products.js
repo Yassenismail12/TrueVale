@@ -1,14 +1,20 @@
-
 // ====== ELEMENTS ======
 const productsGrid = document.getElementById("productsGrid");
 const searchInput = document.getElementById("searchInput");
 const searchForm = document.getElementById("searchForm");
 const filterButtons = document.querySelectorAll(".filter-btn");
 const voiceSearchBtn = document.getElementById("voiceSearchBtn");
+const minPriceInput = document.getElementById("minPrice");
+const maxPriceInput = document.getElementById("maxPrice");
+const applyPriceFilterBtn = document.getElementById("applyPriceFilter");
+applyPriceFilterBtn.addEventListener("click", () => {
+  applyFilters();
+});
 
 let products = [];
 let filteredProducts = [];
 let currentCategory = "all";
+
 
 // ====== INIT ======
 document.addEventListener("DOMContentLoaded", () => {
@@ -25,7 +31,7 @@ async function fetchProducts() {
     showLoading();
 
     const [apiRes, fileRes] = await Promise.all([
-      fetch("https://dummyjson.com/products?limit=50"),
+      fetch("https://dummyjson.com/products?limit=200"),
       fetch("Example.json")
     ]);
 
@@ -85,8 +91,8 @@ function displayProducts(items) {
     <div class="product-card" style="animation-delay:${i * 0.05}s">
       <div class="product-img-wrapper">
         <img src="${p.images?.[0] || placeholder}" 
-             alt="${p.title}" 
-             onerror="this.src='${placeholder}'">
+            alt="${p.title}" 
+            onerror="this.src='${placeholder}'">
         <div class="product-icons">
           <button class="icon-btn favourite-btn" data-id="${p.id}" aria-label="Add to Favourites"><i class="bi bi-heart"></i></button>
           <button class="icon-btn quick-view-btn" data-id="${p.id}" aria-label="Quick View"><i class="bi bi-eye"></i></button>
@@ -222,10 +228,74 @@ function applyFilters() {
     );
   }
 
+  // Price filtering
+const minPrice = parseFloat(minPriceInput.value) || 0;
+const maxPrice = parseFloat(maxPriceInput.value) || Infinity;
+
+results = results.filter(p => {
+  const price = parseFloat(p.price) || 0;
+  return price >= minPrice && price <= maxPrice;
+});
+
+
   filteredProducts = results;
-  displayProducts(results);
+  currentPage = 1;
+  updateDisplayedProducts();
+
 }
 
+// ===== PAGINATION =====
+let currentPage = 1;
+const productsPerPage = 12; // adjust per your layout
+
+function renderPagination(totalItems) {
+  const pagination = document.getElementById("pagination");
+  const totalPages = Math.ceil(totalItems / productsPerPage);
+  pagination.innerHTML = "";
+
+  if (totalPages <= 1) {
+    pagination.style.display = "none";
+    return;
+  }
+
+  pagination.style.display = "flex";
+
+  // Prev button
+  const prevBtn = document.createElement("button");
+  prevBtn.textContent = "Prev";
+  prevBtn.disabled = currentPage === 1;
+  prevBtn.onclick = () => changePage(currentPage - 1);
+  pagination.appendChild(prevBtn);
+
+  // Page numbers
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement("button");
+    btn.textContent = i;
+    if (i === currentPage) btn.classList.add("active");
+    btn.onclick = () => changePage(i);
+    pagination.appendChild(btn);
+  }
+
+  // Next button
+  const nextBtn = document.createElement("button");
+  nextBtn.textContent = "Next";
+  nextBtn.disabled = currentPage === totalPages;
+  nextBtn.onclick = () => changePage(currentPage + 1);
+  pagination.appendChild(nextBtn);
+}
+
+function changePage(pageNum) {
+  currentPage = pageNum;
+  updateDisplayedProducts();
+}
+
+function updateDisplayedProducts() {
+  const start = (currentPage - 1) * productsPerPage;
+  const end = start + productsPerPage;
+  const itemsToShow = filteredProducts.slice(start, end);
+  displayProducts(itemsToShow);
+  renderPagination(filteredProducts.length);
+}
 
 
 // ====== VOICE SEARCH ======

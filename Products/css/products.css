@@ -774,3 +774,122 @@
     font-size: 0.95rem;
   }
 }
+/* ===== PAGINATION ===== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.pagination button:hover {
+  background: var(--accent-color);
+}
+
+.pagination button.active {
+  background: var(--accent-color);
+  box-shadow: 0 0 5px var(--accent-color);
+}
+
+.pagination button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ================== PRICE FILTER ================== */
+.price-filter {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.price-filter label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.price-filter input[type="number"] {
+  width: 80px;
+  padding: 0.5rem 0.8rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.price-filter input[type="number"]:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+#applyPriceFilter {
+  background: var(--white);
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 0.6rem 1.4rem;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+#applyPriceFilter::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: var(--primary-color);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+  z-index: -1;
+}
+
+#applyPriceFilter:hover::before,
+#applyPriceFilter.active::before {
+  width: 300px;
+  height: 300px;
+}
+
+#applyPriceFilter:hover,
+#applyPriceFilter.active {
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .price-filter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .price-filter input[type="number"] {
+    width: 100%;
+  }
+
+  #applyPriceFilter {
+    width: 100%;
+  }
+}

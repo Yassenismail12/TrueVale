@@ -124,6 +124,16 @@
 
       <!-- Filters -->
       <div class="filters">
+        <div class="price-filter">
+        <label for="minPrice">Min Price:</label>
+        <input type="number" id="minPrice" placeholder="0" min="0" />
+
+        <label for="maxPrice">Max Price:</label>
+        <input type="number" id="maxPrice" placeholder="1000" min="0" />
+
+        <button id="applyPriceFilter">Apply</button>
+      </div>
+
         <button class="filter-btn active" data-category="all">All</button>
         <button class="filter-btn" data-category="smartphones">
           Smartphones
@@ -138,6 +148,10 @@
 
       <!-- Products Grid -->
       <div class="explore-gallery" id="productsGrid"></div>
+      
+      <!-- Pagination -->
+      <div class="pagination" id="pagination"></div>
+
     </section>
 
     <!-- ========================= FOOTER ========================= -->
