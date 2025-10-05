@@ -7,6 +7,7 @@
 It delivers an elegant shopping experience with intelligent product discovery, persistent cart and favorites, dynamic filtering, and a fully functional checkout flow — all powered by modern web technologies.
 
 TrueVal is designed as a **standalone front-end application** using local storage and dummy APIs (such as [DummyJSON](https://dummyjson.com/)) for demonstration, but can be easily integrated with any backend (Node.js, Django, Laravel, etc.) for production use.
+
 ![Landing Page](/landing-page.png)
 ---
 
