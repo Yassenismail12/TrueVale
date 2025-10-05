@@ -1,8 +1,9 @@
+// DOM Element References
 const orderItems = document.getElementById("orderItems");
 const orderTotal = document.getElementById("orderTotal");
 const form = document.getElementById("checkoutForm");
 const successModal = document.getElementById("successModal");
-
+// loadCartSummary
 function loadCartSummary() {
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
   if (!cart.length) {
@@ -27,6 +28,7 @@ function loadCartSummary() {
   orderTotal.textContent = `$${total.toFixed(2)}`;
 }
 
+// validateForm
 function validateForm() {
   let isValid = true;
 
@@ -58,6 +60,7 @@ function validateForm() {
   return isValid;
 }
 
+// Form Submission Event
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -72,4 +75,5 @@ form.addEventListener("submit", (e) => {
   }
 });
 
+// Initialization
 loadCartSummary();

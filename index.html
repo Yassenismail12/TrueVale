@@ -1,244 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Modern e-commerce platform with smart shopping experience">
-  <title>TrueVal</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Modern e-commerce platform with smart shopping experience"
+    />
+    <title>TrueVal</title>
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="assets/images/favicon.ico"
+      type="image/x-icon"
+    />
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
 
-<!-- CSS Files -->
-<link rel="stylesheet" href="assets/css/vars.css">    
-<link rel="stylesheet" href="assets/css/base.css">     
-<link rel="stylesheet" href="assets/css/responsive.css">
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/vars.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-</head>
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+  </head>
 
-<body>
-  <!-- ========================= NAVBAR ========================= -->
-  <nav class="navbar" id="navbar">
-    <!-- Logo -->
-    <div class="logo">
-      <a href="#" aria-label="Home">
-        <img src="assets/images/TrV.png" alt="TrueVal Logo">
-      </a>
-    </div>
-
-    <!-- Hamburger Menu -->
-    <div class="hamburger" id="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-    <!-- Navigation Links -->
-    <ul class="nav-links" id="navLinks">
-      <li class="dropdown">
-        <a href="#" aria-haspopup="true" aria-expanded="false">
-          Categories <i class="bi bi-chevron-down"></i>
+  <body>
+    <!-- ========================= NAVBAR ========================= -->
+    <nav class="navbar" id="navbar">
+      <!-- Logo -->
+      <div class="logo">
+        <a href="#" aria-label="Home">
+          <img src="assets/images/TrV.png" alt="TrueVal Logo" />
         </a>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="#" role="menuitem">Electronics</a></li>
-          <li><a href="#" role="menuitem">Fashion</a></li>
-          <li><a href="#" role="menuitem">Home & Kitchen</a></li>
-          <li><a href="#" role="menuitem">Beauty</a></li>
-          <li><a href="#" role="menuitem">Sports</a></li>
-          <li><a href="#" role="menuitem">Books</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Deals</a></li>
-      <li><a href="#">Products</a></li>
-
-      <!-- Mobile Bottom Icons -->
-      <div class="mobile-bottom-icons">
-        <a href="#" aria-label="Account"><i class="bi bi-person"></i></a>
-        <a href="#" aria-label="Favourites"><i class="bi bi-heart"></i></a>
-        <a href="#" aria-label="Cart"><i class="bi bi-cart"></i></a>
       </div>
-    </ul>
 
-    <!-- Search Bar -->
-    <div class="search-container">
-      <form class="search-form" id="searchForm" role="search">
-        <button type="submit" class="search-btn" aria-label="Search">
-          <i class="bi bi-search"></i>
-        </button>
-        <input
-          type="search"
-          class="search-input"
-          id="searchInput"
-          placeholder="Search for products..."
-          autocomplete="off"
-          aria-label="Search products"
+      <!-- Hamburger Menu -->
+      <div
+        class="hamburger"
+        id="hamburger"
+        aria-label="Toggle navigation"
+        role="button"
+        tabindex="0"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <!-- Navigation Links -->
+      <ul class="nav-links" id="navLinks">
+        <li class="dropdown">
+          <a href="#" aria-haspopup="true" aria-expanded="false">
+            Categories <i class="bi bi-chevron-down"></i>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#" data-category="smartphones">Smartphones</a></li>
+            <li><a href="#" data-category="laptops">Laptops</a></li>
+            <li><a href="#" data-category="fragrances">Fragrances</a></li>
+            <li><a href="#" data-category="beauty">Beauty</a></li>
+            <li><a href="#" data-category="furniture">Furniture</a></li>
+          </ul>
+
+        </li>
+        <li><a href="#">Deals</a></li>
+        <li><a href="Products/products.html">Products</a></li>
+
+        <!-- Mobile Bottom Icons -->
+        <div class="mobile-bottom-icons">
+          <a href="#" aria-label="Account"><i class="bi bi-person"></i></a>
+          <a href="/Favourites/favourites.html" aria-label="Favourites"
+            ><i class="bi bi-heart"></i
+          ></a>
+          <a href="/Cart/cart.html" aria-label="Cart"
+            ><i class="bi bi-cart"></i
+          ></a>
+        </div>
+      </ul>
+
+      <!-- Search Bar -->
+      <div class="search-container">
+        <form class="search-form" id="searchForm" role="search">
+          <button type="submit" class="search-btn" aria-label="Search">
+            <i class="bi bi-search"></i>
+          </button>
+          <input
+            type="search"
+            class="search-input"
+            id="searchInput"
+            placeholder="Search for products..."
+            autocomplete="off"
+            aria-label="Search products"
+          />
+          <div class="icon-separator"></div>
+          <button
+            type="button"
+            class="voice-search-btn"
+            id="voiceSearchBtn"
+            aria-label="Voice Search"
+          >
+            <i class="bi bi-mic"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- Navigation Actions -->
+      <div class="nav-actions">
+        <a href="#" class="nav-action" aria-label="Account">
+          <i class="bi bi-person"></i><span>Account</span>
+        </a>
+        <a
+          href="/Favourites/favourites.html"
+          class="nav-action"
+          aria-label="Favourites"
         >
-        <div class="icon-separator"></div>
-        <button type="button" class="voice-search-btn" id="voiceSearchBtn" aria-label="Voice Search">
-          <i class="bi bi-mic"></i>
+          <i class="bi bi-heart"></i><span>Favourites</span>
+        </a>
+        <a href="/Cart/cart.html" class="nav-action" aria-label="Shopping Cart">
+          <i class="bi bi-cart"></i><span>Cart</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- ========================= HERO SECTION ========================= -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-image">
+          <img
+            src="assets/images/Products.png"
+            alt="Featured Shopping Products"
+          />
+        </div>
+        <div class="hero-text">
+          <h1 class="hero-title">
+            Shopping<br />
+            <span class="highlight">Became</span><br />
+            <span class="highlight-strong">SMARTER</span>
+          </h1>
+          <p class="hero-subtitle">
+            Explore exclusive deals, best sellers, and trending collections all
+            in one place. Experience the future of online shopping today.
+          </p>
+          <button id="shopbttn" class="hero-btn">Shop Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= EXCLUSIVES SECTION ========================= -->
+    <section class="exclusives-section">
+      <div class="exclusives-header">
+        <span class="exclusives-badge">Exclusives</span>
+      </div>
+
+      <div class="exclusives-carousel">
+        <button class="carousel-btn prev" aria-label="Previous">
+          <i class="bi bi-chevron-left"></i>
         </button>
-      </form>
-    </div>
 
-    <!-- Navigation Actions -->
-    <div class="nav-actions">
-      <a href="#" class="nav-action" aria-label="Account">
-        <i class="bi bi-person"></i><span>Account</span>
-      </a>
-      <a href="#" class="nav-action" aria-label="Favourites">
-        <i class="bi bi-heart"></i><span>Favourites</span>
-      </a>
-      <a href="#" class="nav-action" aria-label="Shopping Cart">
-        <i class="bi bi-cart"></i><span>Cart</span>
-      </a>
-    </div>
-  </nav>
+        <div class="carousel-window">
+          <div class="carousel-track">
+            <div class="exclusive-item">
+              <img src="assets/images/electronics.jpeg" alt="Electronics" />
+              <p>Electronics</p>
+            </div>
+            <div class="exclusive-item">
+              <img src="assets/images/fashion.png" alt="Fashion" />
+              <p>Fashion</p>
+            </div>
+            <div class="exclusive-item">
+              <img src="assets/images/home.png" alt="Home & Kitchen" />
+              <p>Home & Kitchen</p>
+            </div>
+            <div class="exclusive-item">
+              <img src="assets/images/beauty.png" alt="Beauty" />
+              <p>Beauty</p>
+            </div>
+            <div class="exclusive-item">
+              <img src="assets/images/sports.jpeg" alt="Sports" />
+              <p>Sports</p>
+            </div>
+            <div class="exclusive-item">
+              <img src="assets/images/books.png" alt="Books" />
+              <p>Books</p>
+            </div>
+            <div class="exclusive-item">
+              <img src="assets/images/gaming.png" alt="Gaming" />
+              <p>Gaming</p>
+            </div>
+            <div class="exclusive-item">
+              <img src="assets/images/health.png" alt="Health" />
+              <p>Health</p>
+            </div>
+          </div>
+        </div>
 
-  <!-- Overlay -->
-  <div class="overlay" id="overlay"></div>
-
-  <!-- ========================= HERO SECTION ========================= -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-image">
-        <img src="assets/images/Products.png" alt="Featured Shopping Products">
+        <button class="carousel-btn next" aria-label="Next">
+          <i class="bi bi-chevron-right"></i>
+        </button>
       </div>
-      <div class="hero-text">
-        <h1 class="hero-title">
-          Shopping<br>
-          <span class="highlight">Became</span><br>
-          <span class="highlight-strong">SMARTER</span>
-        </h1>
-        <p class="hero-subtitle">
-          Explore exclusive deals, best sellers, and trending collections all in one place.
-          Experience the future of online shopping today.
-        </p>
-        <button class="hero-btn">Shop Now</button>
+    </section>
+
+    <!-- ========================= EXPLORE SECTION ========================= -->
+    <section class="explore-section">
+      <!-- Explore Label -->
+      <div class="explore-label">Explore</div>
+
+      <!-- Grid Gallery -->
+      <div class="explore-gallery-main">
+        <div class="item tall">
+          <img src="assets/images/excc.png" alt="" />
+        </div>
+        <div class="item wide">
+          <img src="assets/images/trending.png" alt="" />
+        </div>
+        <div class="item"><img src="assets/images/Seasonal.png" alt="" /></div>
+        <div class="item tall">
+          <img src="assets/images/explore.png" alt="" />
+        </div>
+        <div class="item wide">
+          <img src="assets/images/explore.png" alt="" />
+        </div>
+        <div class="item"><img src="assets/images/explore.png" alt="" /></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ========================= EXCLUSIVES SECTION ========================= -->
-  <section class="exclusives-section">
-    <div class="exclusives-header">
-      <span class="exclusives-badge">Exclusives</span>
-    </div>
+    <!-- ========================= SELLER SECTION ========================= -->
+    <section class="seller-section">
+      <div class="seller-header">
+        <span>Be a Seller</span>
+      </div>
 
-    <div class="exclusives-carousel">
-      <button class="carousel-btn prev" aria-label="Previous">
-        <i class="bi bi-chevron-left"></i>
-      </button>
+      <div class="seller-content">
+        <div class="seller-text">
+          <h2>
+            Grow Your Business with True<span style="color: var(--accent-color)"
+              >Val</span
+            >
+          </h2>
+          <p>
+            Join thousands of successful entrepreneurs who reach millions of
+            shoppers every day. Showcase your products, expand your brand, and
+            boost your sales — all in one smart platform.
+          </p>
+          <button class="seller-btn">Start Selling</button>
+        </div>
+        <div class="seller-image">
+          <img src="assets/images/seller.png" alt="Be a Seller" />
+        </div>
+      </div>
+    </section>
 
-      <div class="carousel-window">
-        <div class="carousel-track">
-          <div class="exclusive-item"><img src="assets/images/ex.png" alt="Electronics"><p>Electronics</p></div>
-          <div class="exclusive-item"><img src="assets/images/ex.png" alt="Fashion"><p>Fashion</p></div>
-          <div class="exclusive-item"><img src="assets/images/ex.png" alt="Home & Kitchen"><p>Home & Kitchen</p></div>
-          <div class="exclusive-item"><img src="assets/images/ex.png" alt="Beauty"><p>Beauty</p></div>
-          <div class="exclusive-item"><img src="assets/images/ex.png" alt="Sports"><p>Sports</p></div>
-          <div class="exclusive-item"><img src="assets/images/ex.png" alt="Books"><p>Books</p></div>
-          <div class="exclusive-item"><img src="assets/images/ex.png" alt="Gaming"><p>Gaming</p></div>
-          <div class="exclusive-item"><img src="assets/images/ex.png" alt="Health"><p>Health</p></div>
+    <!-- ========================= FOOTER ========================= -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-col footer-brand">
+          <div class="footer-branding">
+            <img
+              src="assets/images/TrV.png"
+              alt="TrueVal Logo"
+              class="footer-logo"
+            />
+            <h3 class="footer-brand-text">
+              True<span style="color: var(--accent-color)">Val</span>
+            </h3>
+          </div>
+          <p>
+            Experience smart shopping with exclusive deals, fast delivery, and
+            top-notch service all in one place.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="#">New Arrivals</a></li>
+            <li><a href="#">Best Sellers</a></li>
+            <li><a href="#">Gift Cards</a></li>
+            <li><a href="#">Offers</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Shipping Info</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="Instagram"
+              ><i class="bi bi-instagram"></i
+            ></a>
+            <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          </div>
         </div>
       </div>
 
-      <button class="carousel-btn next" aria-label="Next">
-        <i class="bi bi-chevron-right"></i>
-      </button>
-    </div>
-  </section>
-
-  <!-- ========================= EXPLORE SECTION ========================= -->
-  <section class="explore-section">
-    <!-- Explore Label -->
-    <div class="explore-label">Explore</div>
-
-    <!-- Grid Gallery -->
-    <div class="explore-gallery-main">
-      <div class="item tall"><img src="assets/images/explore.png" alt=""></div>
-      <div class="item wide"><img src="assets/images/explore.png" alt=""></div>
-      <div class="item"><img src="assets/images/explore.png" alt=""></div>
-      <div class="item tall"><img src="assets/images/explore.png" alt=""></div>
-      <div class="item wide"><img src="assets/images/explore.png" alt=""></div>
-      <div class="item"><img src="assets/images/explore.png" alt=""></div>
-    </div>
-  </section>
-
-  <!-- ========================= SELLER SECTION ========================= -->
-  <section class="seller-section">
-    <div class="seller-header">
-      <span>Be a Seller</span>
-    </div>
-
-    <div class="seller-content">
-      <div class="seller-text">
-        <h2>Grow Your Business with True<span style="color: var(--accent-color);">Val</span></h2>
-        <p>Join thousands of successful entrepreneurs who reach millions of shoppers every day. Showcase your products, expand your brand, and boost your sales — all in one smart platform.</p>
-        <button class="seller-btn">Start Selling</button>
+      <div class="footer-bottom">
+        <p>&copy; 2026 TrueVal. All rights reserved.</p>
       </div>
-      <div class="seller-image">
-        <img src="assets/images/seller.png" alt="Be a Seller">
-      </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- ========================= FOOTER ========================= -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-col footer-brand">
-        <div class="footer-branding">
-          <img src="assets/images/TrV.png" alt="TrueVal Logo" class="footer-logo">
-          <h3 class="footer-brand-text">True<span style="color: var(--accent-color);">Val</span></h3>
-        </div>
-        <p>Experience smart shopping with exclusive deals, fast delivery, and top-notch service all in one place.</p>
-      </div>
-
-      <div class="footer-col">
-        <h4>Shop</h4>
-        <ul>
-          <li><a href="#">New Arrivals</a></li>
-          <li><a href="#">Best Sellers</a></li>
-          <li><a href="#">Gift Cards</a></li>
-          <li><a href="#">Offers</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Support</h4>
-        <ul>
-          <li><a href="#">Help Center</a></li>
-          <li><a href="#">Track Order</a></li>
-          <li><a href="#">Returns</a></li>
-          <li><a href="#">Shipping Info</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Follow Us</h4>
-        <div class="social-icons">
-          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-          <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>© 2026 TrueVal. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- ========================= SCRIPTS ========================= -->
-  <script src="assets/js/nav.js" defer></script>
-  <script src="assets/js/carousel.js" defer></script>
-  <script src="assets/js/seller.js" defer></script>
-</body>
+    <!-- ========================= SCRIPTS ========================= -->
+    <script src="assets/js/nav.js" defer></script>
+    <script src="assets/js/carousel.js" defer></script>
+    <script src="assets/js/seller.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+  </body>
 </html>

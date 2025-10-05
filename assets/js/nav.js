@@ -1,10 +1,13 @@
+// DOMContentLoaded Event Listener
 document.addEventListener("DOMContentLoaded", () => {
+  // Navbar & Hamburger Menu Variables
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
   const overlay = document.getElementById('overlay');
   const navbar = document.getElementById('navbar');
-
+  //Existence Check
   if (hamburger && navLinks && overlay && navbar) {
+    // Toggle Menu Functionality
     function toggleMenu() {
       hamburger.classList.toggle('active');
       navLinks.classList.toggle('open');
@@ -12,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const isExpanded = hamburger.classList.contains('active');
       hamburger.setAttribute('aria-expanded', isExpanded);
     }
-
+    // Menu Click + Keyboard Accessibility
     hamburger.addEventListener('click', toggleMenu);
     hamburger.addEventListener('keypress', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
@@ -20,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         toggleMenu();
       }
     });
-
+      //Overlay Click — Close Menu
     overlay.addEventListener('click', () => {
       hamburger.classList.remove('active');
       navLinks.classList.remove('open');
@@ -62,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Voice Search (Mock) – safe check
   const voiceBtn = document.getElementById('voiceSearchBtn');
   const searchInput = document.getElementById('searchInput');
+  // Voice Recognition Setup
   if (voiceBtn && searchInput) {
     voiceBtn.addEventListener('click', () => {
       if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
@@ -69,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const recognition = new SpeechRecognition();
         recognition.lang = 'en-US';
         recognition.continuous = false;
-
+// Listening Feedback + Handling Result
         voiceBtn.classList.add('listening');
 
         recognition.onresult = (event) => {
@@ -77,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
           searchInput.value = transcript;
           voiceBtn.classList.remove('listening');
         };
-
+//Error and cleanup
         recognition.onerror = () => {
           voiceBtn.classList.remove('listening');
         };
@@ -104,4 +108,12 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   }
+});
+//Category Redirection 
+document.querySelectorAll('.dropdown-menu a[data-category]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const category = e.target.getAttribute('data-category');
+    window.location.href = `/Products/products.html?category=${encodeURIComponent(category)}`;
+  });
 });

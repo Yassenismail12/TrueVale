@@ -1,8 +1,9 @@
+// Variable Setup
 const cartGrid = document.getElementById("cartGrid");
 const subtotalAmount = document.getElementById("subtotalAmount");
 const totalAmount = document.getElementById("totalAmount");
 
-// --- Load and Save ---
+// Local Storage Management
 function getCart() {
   return JSON.parse(localStorage.getItem("cart") || "[]");
 }
@@ -10,7 +11,7 @@ function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-// --- Display ---
+// Display the Cart
 function displayCart() {
   const cart = getCart();
 
@@ -26,7 +27,7 @@ function displayCart() {
     totalAmount.textContent = "$0.00";
     return;
   }
-
+// When Cart Has Items
   const placeholder = "https://placehold.co/240x240?text=No+Image&font=roboto";
   let subtotal = 0;
 
@@ -60,15 +61,15 @@ function displayCart() {
         .join("")}
     </div>
   `;
-
+// Totals Calculation
   subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   subtotalAmount.textContent = `$${subtotal.toFixed(2)}`;
   totalAmount.textContent = `$${(subtotal * 1.0).toFixed(2)}`; // no shipping yet
-
+// Event Handlers Attachment
   attachCartListeners();
 }
 
-// --- Event Listeners ---
+// Event Listeners 
 function attachCartListeners() {
   document.querySelectorAll(".remove-cart-item").forEach((btn) =>
     btn.addEventListener("click", (e) => {
@@ -94,7 +95,8 @@ function attachCartListeners() {
   );
 }
 
-// --- Quantity Updates ---
+// Quantity Update Functions
+// Increment/Decrement
 function updateQuantity(id, delta) {
   const cart = getCart();
   const item = cart.find((p) => p.id == id);
@@ -103,6 +105,7 @@ function updateQuantity(id, delta) {
   saveCart(cart);
   displayCart();
 }
+// Set Custom Quantity
 function setQuantity(id, qty) {
   const cart = getCart();
   const item = cart.find((p) => p.id == id);
@@ -112,7 +115,7 @@ function setQuantity(id, qty) {
   displayCart();
 }
 
-// --- Remove Item ---
+// Removing an Item
 function removeFromCart(id) {
   let cart = getCart();
   cart = cart.filter((item) => item.id != id);
@@ -121,7 +124,7 @@ function removeFromCart(id) {
   showToast("Item removed from cart", "info");
 }
 
-// --- Toast Notifications ---
+// Toast Notification System
 function showToast(message, type = "info") {
   const existing = document.querySelector(".toast");
   if (existing) existing.remove();
@@ -140,9 +143,11 @@ function showToast(message, type = "info") {
     setTimeout(() => toast.remove(), 300);
   }, 3000);
 }
+
+// Checkout Button Handler
 var chkoutbutton = document.getElementById('checkoutBtn');
 chkoutbutton.onclick = function() {
   location.assign('/Cart/checkout.html');
 }
-// --- Init ---
+// Init
 displayCart();

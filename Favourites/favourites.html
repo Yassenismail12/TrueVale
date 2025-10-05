@@ -1,146 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Favorites - TrueVal</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favorites - TrueVal</title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="../assets/css/vars.css">
-  <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/responsive.css">
-  <link rel="stylesheet" href="../Products/css/products.css">
-  <link rel="stylesheet" href="css/products.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="/assets/images/favicon.ico"
+      type="image/x-icon"
+    />
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-</head>
-<body>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/vars.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+    <link rel="stylesheet" href="../Products/css/products.css" />
+    <link rel="stylesheet" href="css/products.css" />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
+    <!-- ========================= NAVBAR ========================= -->
+
     <nav class="navbar" id="navbar">
-    <!-- Logo -->
-    <div class="logo">
-      <a href="../index.html" aria-label="Home">
-        <img src="../assets/images/TrV.png" alt="TrueVal Logo">
-      </a>
-    </div>
- <!-- Hamburger Menu -->
-    <div class="hamburger" id="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-    <ul class="nav-links" id="navLinks">
-      <li class="dropdown">
-        <a href="#" aria-haspopup="true" aria-expanded="false">
-          Categories <i class="bi bi-chevron-down"></i>
+      <!-- Logo -->
+      <div class="logo">
+        <a href="../index.html" aria-label="Home">
+          <img src="../assets/images/TrV.png" alt="TrueVal Logo" />
         </a>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="#" role="menuitem">Smartphones</a></li>
-          <li><a href="#" role="menuitem">Laptops</a></li>
-          <li><a href="#" role="menuitem">Fragrances</a></li>
-          <li><a href="#" role="menuitem">Beauty</a></li>
-          <li><a href="#" role="menuitem">Furniture</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Deals</a></li>
-      <li><a href="products.html" class="active">Products</a></li>
-    </ul>
+      </div>
+      <!-- Hamburger Menu -->
+      <div
+        class="hamburger"
+        id="hamburger"
+        aria-label="Toggle navigation"
+        role="button"
+        tabindex="0"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
-    <!-- Search Bar -->
-    <div class="search-container">
-      <form class="search-form" id="searchForm" role="search">
-        <button type="submit" class="search-btn" aria-label="Search">
-          <i class="bi bi-search"></i>
-        </button>
-        <input
-          type="search"
-          class="search-input"
-          id="searchInput"
-          placeholder="Search for products..."
-          autocomplete="off"
-          aria-label="Search products"
+      <ul class="nav-links" id="navLinks">
+        <li class="dropdown">
+          <a href="#" aria-haspopup="true" aria-expanded="false">
+            Categories <i class="bi bi-chevron-down"></i>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#" data-category="smartphones">Smartphones</a></li>
+            <li><a href="#" data-category="laptops">Laptops</a></li>
+            <li><a href="#" data-category="fragrances">Fragrances</a></li>
+            <li><a href="#" data-category="beauty">Beauty</a></li>
+            <li><a href="#" data-category="furniture">Furniture</a></li>
+          </ul>
+
+        </li>
+        <li><a href="#">Deals</a></li>
+        <li><a href="/Products/products.html" class="active">Products</a></li>
+      </ul>
+
+      <!-- Search Bar -->
+      <div class="search-container">
+        <form class="search-form" id="searchForm" role="search">
+          <button type="submit" class="search-btn" aria-label="Search">
+            <i class="bi bi-search"></i>
+          </button>
+          <input
+            type="search"
+            class="search-input"
+            id="searchInput"
+            placeholder="Search for products..."
+            autocomplete="off"
+            aria-label="Search products"
+          />
+          <div class="icon-separator"></div>
+          <button
+            type="button"
+            class="voice-search-btn"
+            id="voiceSearchBtn"
+            aria-label="Voice Search"
+          >
+            <i class="bi bi-mic"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- Navigation Actions -->
+      <div class="nav-actions">
+        <a href="#" class="nav-action" aria-label="Account">
+          <i class="bi bi-person"></i><span>Account</span>
+        </a>
+        <a
+          href="/Favourites/favourites.html"
+          class="nav-action"
+          aria-label="Favourites"
         >
-        <div class="icon-separator"></div>
-        <button type="button" class="voice-search-btn" id="voiceSearchBtn" aria-label="Voice Search">
-          <i class="bi bi-mic"></i>
-        </button>
-      </form>
-    </div>
+          <i class="bi bi-heart"></i><span>Favourites</span>
+        </a>
+        <a href="/Cart/cart.html" class="nav-action" aria-label="Shopping Cart">
+          <i class="bi bi-cart"></i><span>Cart</span>
+        </a>
+      </div>
+    </nav>
+    <div class="overlay" id="overlay"></div>
 
-    <!-- Navigation Actions -->
-    <div class="nav-actions">
-      <a href="#" class="nav-action" aria-label="Account">
-        <i class="bi bi-person"></i><span>Account</span>
-      </a>
-      <a href="/Favourites/favourites.html" class="nav-action" aria-label="Favourites">
-        <i class="bi bi-heart"></i><span>Favourites</span>
-      </a>
-      <a href="#" class="nav-action" aria-label="Shopping Cart">
-        <i class="bi bi-cart"></i><span>Cart</span>
-      </a>
-    </div>
-  </nav>
+    <!-- ========================= PRODUCTS ========================= -->
+    <section class="explore-section">
+      <div class="explore-label">Your Favorites</div>
+      <div class="explore-gallery" id="favouritesGrid"></div>
+    </section>
 
-  <div class="overlay" id="overlay"></div>
-
-  <section class="explore-section">
-    <div class="explore-label">Your Favorites</div>
-    <div class="explore-gallery" id="favouritesGrid"></div>
-  </section>
-
-<!-- Footer -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-col footer-brand">
-        <div class="footer-branding">
-          <img src="../assets/images/TrV.png" alt="TrueVal Logo" class="footer-logo">
-          <h3 class="footer-brand-text">True<span style="color: var(--accent-color);">Val</span></h3>
+    <!-- ========================= FOOTER ========================= -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-col footer-brand">
+          <div class="footer-branding">
+            <img
+              src="../assets/images/TrV.png"
+              alt="TrueVal Logo"
+              class="footer-logo"
+            />
+            <h3 class="footer-brand-text">
+              True<span style="color: var(--accent-color)">Val</span>
+            </h3>
+          </div>
+          <p>
+            Experience smart shopping with exclusive deals, fast delivery, and
+            top-notch service all in one place.
+          </p>
         </div>
-        <p>Experience smart shopping with exclusive deals, fast delivery, and top-notch service all in one place.</p>
-      </div>
 
-      <div class="footer-col">
-        <h4>Shop</h4>
-        <ul>
-          <li><a href="#">New Arrivals</a></li>
-          <li><a href="#">Best Sellers</a></li>
-          <li><a href="#">Gift Cards</a></li>
-          <li><a href="#">Offers</a></li>
-        </ul>
-      </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="#">New Arrivals</a></li>
+            <li><a href="#">Best Sellers</a></li>
+            <li><a href="#">Gift Cards</a></li>
+            <li><a href="#">Offers</a></li>
+          </ul>
+        </div>
 
-      <div class="footer-col">
-        <h4>Support</h4>
-        <ul>
-          <li><a href="#">Help Center</a></li>
-          <li><a href="#">Track Order</a></li>
-          <li><a href="#">Returns</a></li>
-          <li><a href="#">Shipping Info</a></li>
-        </ul>
-      </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Shipping Info</a></li>
+          </ul>
+        </div>
 
-      <div class="footer-col">
-        <h4>Follow Us</h4>
-        <div class="social-icons">
-          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-          <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="Instagram"
+              ><i class="bi bi-instagram"></i
+            ></a>
+            <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="footer-bottom">
-      <p>&copy; 2025 TrueVal. All rights reserved.</p> <!-- Dynamic via JS -->
-    </div>
-  </footer>
+      <div class="footer-bottom">
+        <p>&copy; 2026 TrueVal. All rights reserved.</p>
+      </div>
+    </footer>
 
-  <!-- JS -->
-  <script src="../assets/js/nav.js" defer></script>
-  <script src="js/favourites.js" defer></script>
-</body>
+    <!-- JS -->
+    <script src="../assets/js/nav.js" defer></script>
+    <script src="js/favourites.js" defer></script>
+  </body>
 </html>

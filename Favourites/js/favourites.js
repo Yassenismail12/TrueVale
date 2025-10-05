@@ -1,8 +1,9 @@
+// DOM Reference
 const favouritesGrid = document.getElementById("favouritesGrid");
 
 // ===== Utilities =====
 
-// Get stored favourites (full product objects)
+// Utilities — Storage Handling
 function getFavourites() {
   return JSON.parse(localStorage.getItem("favouriteProducts") || "[]");
 }
@@ -32,7 +33,7 @@ function showEmptyState() {
   `;
 }
 
-// ===== Render =====
+// Rendering Favourite Products
 function displayFavourites(favs) {
   if (!favs.length) {
     showEmptyState();
@@ -82,7 +83,7 @@ function displayFavourites(favs) {
   attachListeners();
 }
 
-// ===== Interactions =====
+// User Interaction Listeners
 function attachListeners() {
   // Remove favourite
   document.querySelectorAll(".remove-fav-btn").forEach(btn => {
@@ -109,7 +110,7 @@ function attachListeners() {
   });
 }
 
-// ===== Favourites Management =====
+// Favourites Management
 function removeFavourite(id) {
   let favs = getFavourites();
   favs = favs.filter(p => p.id !== id);
@@ -118,7 +119,7 @@ function removeFavourite(id) {
   showToast("Removed from favourites", "info");
 }
 
-// ===== Cart Management =====
+// Cart Management
 function addToCart(productId) {
   const favs = getFavourites();
   const product = favs.find(p => p.id === parseInt(productId));
@@ -136,7 +137,7 @@ function addToCart(productId) {
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartBadge();
 }
-
+// Update Cart Badge
 function updateCartBadge() {
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
   const total = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
@@ -152,7 +153,7 @@ function updateCartBadge() {
   badge.style.display = total > 0 ? "flex" : "none";
 }
 
-// ===== Toast Notifications =====
+// Toast Notifications
 function showToast(message, type = "info") {
   const existing = document.querySelector(".toast");
   if (existing) existing.remove();
