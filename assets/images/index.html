@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Modern e-commerce platform with smart shopping experience">
+  <title>TrueVal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/responsive.css">
+  <link rel="stylesheet" href="./css/vars.css">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="logo">
+      <a href="#" aria-label="Home">
+        <img src="TrV.png" alt="SmartShop Logo">
+      </a>
+    </div>
+
+    <!-- Hamburger Menu -->
+    <div class="hamburger" id="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Navigation Links -->
+    <ul class="nav-links" id="navLinks">
+      <li class="dropdown">
+        <a href="#" aria-haspopup="true" aria-expanded="false">
+          Categories <i class="bi bi-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#" role="menuitem">Electronics</a></li>
+          <li><a href="#" role="menuitem">Fashion</a></li>
+          <li><a href="#" role="menuitem">Home & Kitchen</a></li>
+          <li><a href="#" role="menuitem">Beauty</a></li>
+          <li><a href="#" role="menuitem">Sports</a></li>
+          <li><a href="#" role="menuitem">Books</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Deals</a></li>
+      <li><a href="#">Best Sellers</a></li>
+
+      <!-- Mobile Bottom Icons -->
+      <div class="mobile-bottom-icons">
+        <a href="#" aria-label="Account"><i class="bi bi-person"></i></a>
+        <a href="#" aria-label="Favourites"><i class="bi bi-heart"></i></a>
+        <a href="#" aria-label="Cart"><i class="bi bi-cart"></i></a>
+      </div>
+    </ul>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+      <form class="search-form" id="searchForm" role="search">
+        <button type="submit" class="search-btn" aria-label="Search">
+          <i class="bi bi-search"></i>
+        </button>
+        <input 
+          type="search" 
+          class="search-input" 
+          id="searchInput" 
+          placeholder="Search for products..." 
+          autocomplete="off"
+          aria-label="Search products"
+        >
+        <div class="icon-separator"></div>
+        <button type="button" class="voice-search-btn" id="voiceSearchBtn" aria-label="Voice Search">
+          <i class="bi bi-mic"></i>
+        </button>
+      </form>
+    </div>
+
+    <!-- Navigation Actions -->
+    <div class="nav-actions">
+      <a href="#" class="nav-action" aria-label="Account">
+        <i class="bi bi-person"></i>
+        <span>Account</span>
+      </a>
+      <a href="#" class="nav-action" aria-label="Favourites">
+        <i class="bi bi-heart"></i>
+        <span>Favourites</span>
+      </a>
+      <a href="#" class="nav-action" aria-label="Shopping Cart">
+        <i class="bi bi-cart"></i>
+        <span>Cart</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-image">
+        <img src="Products.png" alt="Featured Shopping Products">
+      </div>
+      <div class="hero-text">
+        <h1 class="hero-title">
+          Shopping<br>
+          <span class="highlight">Became</span><br>
+          <span class="highlight-strong">SMARTER</span>
+        </h1>
+        <p class="hero-subtitle">
+          Explore exclusive deals, best sellers, and trending collections all in one place. Experience the future of online shopping today.
+        </p>
+      </div>
+    </div>
+  </section>  
+ <!-- Exclusives Section -->
+<section class="exclusives-section">
+  <div class="exclusives-header">
+    <span class="exclusives-badge">Exclusives</span>
+  </div>
+
+  <div class="exclusives-carousel">
+    <button class="carousel-btn prev" aria-label="Previous">
+      <i class="bi bi-chevron-left"></i>
+    </button>
+
+    <div class="carousel-window">
+      <div class="carousel-track">
+        <div class="exclusive-item"><img src="ex.png" alt="Electronics"><p>Electronics</p></div>
+        <div class="exclusive-item"><img src="ex.png" alt="Fashion"><p>Fashion</p></div>
+        <div class="exclusive-item"><img src="ex.png" alt="Home & Kitchen"><p>Home & Kitchen</p></div>
+        <div class="exclusive-item"><img src="ex.png" alt="Beauty"><p>Beauty</p></div>
+        <div class="exclusive-item"><img src="ex.png" alt="Sports"><p>Sports</p></div>
+        <div class="exclusive-item"><img src="ex.png" alt="Books"><p>Books</p></div>
+        <div class="exclusive-item"><img src="ex.png" alt="Gaming"><p>Gaming</p></div>
+        <div class="exclusive-item"><img src="ex.png" alt="Health"><p>Health</p></div>
+        <div class="exclusive-item"><img src="ex.png" alt="Health"><p>Health</p></div>
+      </div>
+    </div>
+
+    <button class="carousel-btn next" aria-label="Next">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+</section>
+
+<section class="explore-section">
+  <!-- Explore Label -->
+  <div class="explore-label">Explore</div>
+
+  <!-- Grid Gallery -->
+  <div class="explore-gallery">
+    <div class="item tall"><img src="explore.png" alt=""></div>
+    <div class="item wide"><img src="explore.png" alt=""></div>
+    <div class="item"><img src="explore.png" alt=""></div>
+    <div class="item tall"><img src="explore.png" alt=""></div>
+    <div class="item wide"><img src="explore.png" alt=""></div>
+    <div class="item"><img src="explore.png" alt=""></div>
+  </div>
+</section>
+<!-- Be a Seller Section -->
+<section class="seller-section">
+  <div class="seller-header">
+    <span>Be a Seller</span>
+  </div>
+
+  <div class="seller-content">
+    <div class="seller-text">
+      <h2>Grow Your Business with SmartShop</h2>
+      <p>Join thousands of successful entrepreneurs who reach millions of shoppers every day. Showcase your products, expand your brand, and boost your sales — all in one smart platform.</p>
+      <button class="seller-btn">Start Selling</button>
+    </div>
+    <div class="seller-image">
+      <img src="seller.png" alt="Be a Seller">
+    </div>
+  </div>
+</section>
+<footer class="footer">
+  <div class="footer-container">
+<div class="footer-col footer-brand">
+  <div class="footer-branding">
+    <img src="TrV.png" alt="TrueVal Logo" class="footer-logo">
+    <h3 class="footer-brand-text">True<span style="color: var(--accent-color);">Val</span></h3>
+  </div>
+  <p>Experience smart shopping with exclusive deals, fast delivery, and top-notch service all in one place.</p>
+</div>
+
+
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#">New Arrivals</a></li>
+        <li><a href="#">Best Sellers</a></li>
+        <li><a href="#">Gift Cards</a></li>
+        <li><a href="#">Offers</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="#">Shipping Info</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 TrueVal. All rights reserved.</p>
+  </div>
+</footer>
+
+
+  <script>
+    // Navigation Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    const overlay = document.getElementById('overlay');
+    const navbar = document.getElementById('navbar');
+
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('open');
+      overlay.classList.toggle('show');
+      
+      const isExpanded = hamburger.classList.contains('active');
+      hamburger.setAttribute('aria-expanded', isExpanded);
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    
+    hamburger.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleMenu();
+      }
+    });
+
+    overlay.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('open');
+      overlay.classList.remove('show');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+
+    // Mobile Dropdown Toggle
+    const dropdowns = document.querySelectorAll('.dropdown > a');
+    dropdowns.forEach(dropdown => {
+      dropdown.addEventListener('click', (e) => {
+        if (window.innerWidth <= 992) {
+          e.preventDefault();
+          dropdown.parentElement.classList.toggle('active');
+        }
+      });
+    });
+
+    // Navbar Scroll Effect
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      
+      if (currentScroll > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      
+      lastScroll = currentScroll;
+    });
+
+    // Voice Search (Mock Implementation)
+    const voiceBtn = document.getElementById('voiceSearchBtn');
+    const searchInput = document.getElementById('searchInput');
+
+    voiceBtn.addEventListener('click', () => {
+      if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = new SpeechRecognition();
+        
+        recognition.lang = 'en-US';
+        recognition.continuous = false;
+        
+        voiceBtn.classList.add('listening');
+        
+        recognition.onresult = (event) => {
+          const transcript = event.results[0][0].transcript;
+          searchInput.value = transcript;
+          voiceBtn.classList.remove('listening');
+        };
+        
+        recognition.onerror = () => {
+          voiceBtn.classList.remove('listening');
+        };
+        
+        recognition.onend = () => {
+          voiceBtn.classList.remove('listening');
+        };
+        
+        recognition.start();
+      } else {
+        alert('Voice search is not supported in your browser.');
+      }
+    });
+
+    // Search Form Handler
+    document.getElementById('searchForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const query = searchInput.value.trim();
+      if (query) {
+        console.log('Searching for:', query);
+        // Add your search logic here
+      }
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('open');
+        overlay.classList.remove('show');
+      }
+    });
+    
+  </script>
+<script>
+  // Exclusives Carousel
+  const track = document.querySelector('.carousel-track');
+  const nextBtn = document.querySelector('.carousel-btn.next');
+  const prevBtn = document.querySelector('.carousel-btn.prev');
+  const items = document.querySelectorAll('.exclusive-item');
+
+  let currentIndex = 0;
+
+  function updateCarousel() {
+    const itemWidth = items[0].offsetWidth + 30; // 30px = gap
+    const visibleCount = Math.floor(document.querySelector('.carousel-window').offsetWidth / itemWidth);
+    const maxIndex = items.length - visibleCount;
+
+    track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+
+    // disable/enable buttons
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex >= maxIndex;
+  }
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex++;
+    updateCarousel();
+  });
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex--;
+    updateCarousel();
+  });
+
+  window.addEventListener('resize', updateCarousel);
+  window.addEventListener('load', updateCarousel);
+
+
+  document.querySelector('.seller-btn').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+</script>
+
+
+</body>
+</html>

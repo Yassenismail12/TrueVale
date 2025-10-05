@@ -1,0 +1,14 @@
+:root {
+    --primary-color: #429992;
+    --secondary-color: #075e71;
+    --accent-color: #ff9800;
+    --text-dark: #222;
+    --text-light: #666;
+    --white: #ffffff;
+    --bg-light: #f0f8ff;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+    --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --navbar-height: 72px;
+}
