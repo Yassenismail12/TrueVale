@@ -8,7 +8,7 @@
     <!-- Favicon -->
     <link
       rel="shortcut icon"
-      href="/assets/images/favicon.ico"
+      href="../assets/images/favicon.ico"
       type="image/x-icon"
     />
 
@@ -34,7 +34,7 @@
     />
   </head>
 
-  <body>
+  <body data-base-path="..">
     <!-- ========================= NAVBAR ========================= -->
     <nav class="navbar" id="navbar">
       <!-- Logo -->
@@ -71,12 +71,18 @@
 
         </li>
         <li><a href="#">Deals</a></li>
-        <li><a href="products.html" class="active">Products</a></li>
+        <li><a href="../Products/products.html" class="active">Products</a></li>
       </ul>
 
       <!-- Search Bar -->
       <div class="search-container">
-        <form class="search-form" id="searchForm" role="search">
+        <form
+          class="search-form"
+          id="searchForm"
+          role="search"
+          data-search-mode="redirect"
+          data-search-target="../Products/products.html"
+        >
           <button type="submit" class="search-btn" aria-label="Search">
             <i class="bi bi-search"></i>
           </button>
@@ -106,17 +112,19 @@
           <i class="bi bi-person"></i><span>Account</span>
         </a>
         <a
-          href="/Favourites/favourites.html"
+          href="../Favourites/favourites.html"
           class="nav-action"
           aria-label="Favourites"
         >
           <i class="bi bi-heart"></i><span>Favourites</span>
         </a>
-        <a href="/Cart/cart.html" class="nav-action" aria-label="Shopping Cart">
+        <a href="cart.html" class="nav-action" aria-label="Shopping Cart">
           <i class="bi bi-cart"></i><span>Cart</span>
         </a>
       </div>
     </nav>
+
+    <div class="overlay" id="overlay"></div>
 
     <!-- ========================= CHECKOUT ========================= -->
     <main class="checkout-container">
@@ -178,6 +186,7 @@
       </div>
     </div>
     <!-- JS -->
+    <script src="../assets/js/nav.js" defer></script>
     <script src="js/checkout.js" defer></script>
   </body>
 </html>

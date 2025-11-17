@@ -13,6 +13,7 @@ function saveCart(cart) {
 
 // Display the Cart
 function displayCart() {
+  if (!cartGrid || !subtotalAmount || !totalAmount) return;
   const cart = getCart();
 
   if (!cart.length) {
@@ -34,8 +35,10 @@ function displayCart() {
   cartGrid.innerHTML = `
     <div class="explore-gallery">
       ${cart
-        .map(
-          (item, i) => `
+        .map((item, i) => {
+          const normalizedPrice = Number(item.price) || 0;
+          item.price = normalizedPrice;
+          return `
         <div class="product-card" style="animation-delay:${i * 0.05}s">
           <div class="product-img-wrapper">
             <img src="${item.images?.[0] || placeholder}" alt="${item.title}" loading="lazy" />
@@ -46,7 +49,7 @@ function displayCart() {
           <div class="product-info">
             <h4>${item.title}</h4>
             <p class="product-category"><i class="bi bi-tag"></i> ${item.category || "Uncategorized"}</p>
-            <div class="product-price">$${item.price.toFixed(2)}</div>
+            <div class="product-price">$${normalizedPrice.toFixed(2)}</div>
           </div>
           <div class="product-actions">
             <div class="quantity-control">
@@ -54,15 +57,18 @@ function displayCart() {
               <input type="number" value="${item.quantity}" min="1" class="qty-input" data-id="${item.id}" />
               <button class="qty-btn plus" data-id="${item.id}">+</button>
             </div>
-            <div class="line-total">$${(item.price * item.quantity).toFixed(2)}</div>
+            <div class="line-total">$${(normalizedPrice * item.quantity).toFixed(2)}</div>
           </div>
-        </div>`
-        )
+        </div>`;
+        })
         .join("")}
     </div>
   `;
 // Totals Calculation
-  subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  subtotal = cart.reduce((sum, item) => {
+    const price = Number(item.price) || 0;
+    return sum + price * item.quantity;
+  }, 0);
   subtotalAmount.textContent = `$${subtotal.toFixed(2)}`;
   totalAmount.textContent = `$${(subtotal * 1.0).toFixed(2)}`; // no shipping yet
 // Event Handlers Attachment
@@ -146,8 +152,12 @@ function showToast(message, type = "info") {
 
 // Checkout Button Handler
 var chkoutbutton = document.getElementById('checkoutBtn');
-chkoutbutton.onclick = function() {
-  location.assign('/Cart/checkout.html');
+if (chkoutbutton) {
+  chkoutbutton.onclick = function() {
+    window.location.href = 'checkout.html';
+  };
 }
-// Init
-displayCart();
+
+if (cartGrid && subtotalAmount && totalAmount) {
+  displayCart();
+}
