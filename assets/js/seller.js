@@ -1,4 +1,7 @@
 // "Be a Seller"
-document.querySelector('.seller-btn').addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+const sellerBtn = document.querySelector('.seller-btn');
+if (sellerBtn) {
+  sellerBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}

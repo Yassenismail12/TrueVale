@@ -15,6 +15,7 @@ function saveFavourites(favs) {
 
 // ===== UI States =====
 function showLoading() {
+  if (!favouritesGrid) return;
   favouritesGrid.innerHTML = `
     <div class="loading-container">
       <div class="spinner"></div>
@@ -24,6 +25,7 @@ function showLoading() {
 }
 
 function showEmptyState() {
+  if (!favouritesGrid) return;
   favouritesGrid.innerHTML = `
     <div class="empty-state">
       <i class="bi bi-heart"></i>
@@ -35,6 +37,7 @@ function showEmptyState() {
 
 // Rendering Favourite Products
 function displayFavourites(favs) {
+  if (!favouritesGrid) return;
   if (!favs.length) {
     showEmptyState();
     return;
@@ -127,11 +130,13 @@ function addToCart(productId) {
 
   let cart = JSON.parse(localStorage.getItem("cart") || "[]");
   const existing = cart.find(item => item.id === product.id);
+  const normalizedPrice = Number(product.price) || 0;
 
   if (existing) {
     existing.quantity += 1;
+    existing.price = Number(existing.price) || normalizedPrice;
   } else {
-    cart.push({ ...product, quantity: 1 });
+    cart.push({ ...product, price: normalizedPrice, quantity: 1 });
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
@@ -142,11 +147,14 @@ function updateCartBadge() {
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
   const total = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
 
-  let badge = document.querySelector(".cart-badge");
+  const cartAction = document.querySelector('.nav-action[aria-label="Shopping Cart"]');
+  if (!cartAction) return;
+
+  let badge = cartAction.querySelector(".cart-badge");
   if (!badge) {
     badge = document.createElement("span");
     badge.className = "cart-badge";
-    document.querySelector('.nav-action[aria-label="Shopping Cart"]').appendChild(badge);
+    cartAction.appendChild(badge);
   }
 
   badge.textContent = total;

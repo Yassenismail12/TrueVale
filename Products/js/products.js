@@ -7,9 +7,11 @@ const voiceSearchBtn = document.getElementById("voiceSearchBtn");
 const minPriceInput = document.getElementById("minPrice");
 const maxPriceInput = document.getElementById("maxPrice");
 const applyPriceFilterBtn = document.getElementById("applyPriceFilter");
-applyPriceFilterBtn.addEventListener("click", () => {
-  applyFilters();
-});
+if (applyPriceFilterBtn) {
+  applyPriceFilterBtn.addEventListener("click", () => {
+    applyFilters();
+  });
+}
 
 let products = [];
 let filteredProducts = [];
@@ -56,6 +58,7 @@ async function fetchProducts() {
 
 // ====== UI STATES ======
 function showLoading() {
+  if (!productsGrid) return;
   productsGrid.innerHTML = `
     <div class="loading-container">
       <div class="spinner"></div>
@@ -64,6 +67,7 @@ function showLoading() {
 }
 
 function showError() {
+  if (!productsGrid) return;
   productsGrid.innerHTML = `
     <div class="error-container">
       <i class="bi bi-exclamation-circle"></i>
@@ -73,6 +77,7 @@ function showError() {
 }
 
 function showEmptyState() {
+  if (!productsGrid) return;
   productsGrid.innerHTML = `
     <div class="empty-state">
       <i class="bi bi-search"></i>
@@ -83,6 +88,7 @@ function showEmptyState() {
 
 // ====== DISPLAY PRODUCTS ======
 function displayProducts(items) {
+  if (!productsGrid) return;
   if (!items.length) return showEmptyState();
 
   const placeholder = 'https://placehold.co/240x240?text=No+Image&font=roboto';
@@ -194,19 +200,23 @@ function initFilters() {
 
   // Search
   let searchTimeout;
-  searchInput.addEventListener("input", () => {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(applyFilters, 300);
-  });
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(applyFilters, 300);
+    });
+  }
 
-  // Form submit
-  searchForm.addEventListener("submit", e => {
-    e.preventDefault();
-    applyFilters();
-  });
+  if (searchForm) {
+    searchForm.addEventListener("submit", e => {
+      e.preventDefault();
+      applyFilters();
+    });
+  }
 
-  // Voice Search
-  voiceSearchBtn.addEventListener("click", startVoiceSearch);
+  if (voiceSearchBtn) {
+    voiceSearchBtn.addEventListener("click", startVoiceSearch);
+  }
 }
 
 function applyFilters() {
@@ -220,7 +230,7 @@ function applyFilters() {
   }
 
   // Search filtering
-  const query = (searchInput.value || "").toLowerCase().trim();
+  const query = (searchInput?.value || "").toLowerCase().trim();
   if (query) {
     results = results.filter(p =>
       (p.title || "").toLowerCase().includes(query) ||
@@ -229,8 +239,8 @@ function applyFilters() {
   }
 
   // Price filtering
-const minPrice = parseFloat(minPriceInput.value) || 0;
-const maxPrice = parseFloat(maxPriceInput.value) || Infinity;
+const minPrice = parseFloat(minPriceInput?.value) || 0;
+const maxPrice = parseFloat(maxPriceInput?.value) || Infinity;
 
 results = results.filter(p => {
   const price = parseFloat(p.price) || 0;
@@ -300,15 +310,28 @@ function updateDisplayedProducts() {
 
 // ====== VOICE SEARCH ======
 function startVoiceSearch() {
-  if (!("webkitSpeechRecognition" in window))
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRecognition) {
     return showToast("Voice search not supported", "error");
+  }
 
-  const recognition = new webkitSpeechRecognition();
+  const recognition = new SpeechRecognition();
+  recognition.lang = "en-US";
+  recognition.continuous = false;
+
+  recognition.onstart = () => voiceSearchBtn?.classList.add("listening");
+  recognition.onend = () => voiceSearchBtn?.classList.remove("listening");
+
   recognition.onresult = e => {
     searchInput.value = e.results[0][0].transcript;
     applyFilters();
   };
-  recognition.onerror = () => showToast("Voice search failed", "error");
+
+  recognition.onerror = () => {
+    voiceSearchBtn?.classList.remove("listening");
+    showToast("Voice search failed", "error");
+  };
+
   recognition.start();
 }
 
@@ -319,8 +342,14 @@ function addToCart(id) {
 
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
   const item = cart.find(i => i.id == id);
-  if (item) item.quantity++;
-  else cart.push({ ...product, quantity: 1 });
+  const normalizedPrice = Number(product.price) || 0;
+
+  if (item) {
+    item.quantity++;
+    item.price = Number(item.price) || normalizedPrice;
+  } else {
+    cart.push({ ...product, price: normalizedPrice, quantity: 1 });
+  }
 
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartBadge();
@@ -330,11 +359,14 @@ function updateCartBadge() {
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
   const total = cart.reduce((sum, i) => sum + (i.quantity || 0), 0);
 
-  let badge = document.querySelector(".cart-badge");
+  const cartAction = document.querySelector('.nav-action[aria-label="Shopping Cart"]');
+  if (!cartAction) return;
+
+  let badge = cartAction.querySelector(".cart-badge");
   if (!badge) {
     badge = document.createElement("span");
     badge.className = "cart-badge";
-    document.querySelector('.nav-action[aria-label="Shopping Cart"]').appendChild(badge);
+    cartAction.appendChild(badge);
   }
 
   badge.textContent = total;

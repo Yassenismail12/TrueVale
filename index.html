@@ -36,7 +36,7 @@
     />
   </head>
 
-  <body>
+  <body data-base-path=".">
     <!-- ========================= NAVBAR ========================= -->
     <nav class="navbar" id="navbar">
       <!-- Logo -->
@@ -80,10 +80,10 @@
         <!-- Mobile Bottom Icons -->
         <div class="mobile-bottom-icons">
           <a href="#" aria-label="Account"><i class="bi bi-person"></i></a>
-          <a href="/Favourites/favourites.html" aria-label="Favourites"
+          <a href="Favourites/favourites.html" aria-label="Favourites"
             ><i class="bi bi-heart"></i
           ></a>
-          <a href="/Cart/cart.html" aria-label="Cart"
+          <a href="Cart/cart.html" aria-label="Cart"
             ><i class="bi bi-cart"></i
           ></a>
         </div>
@@ -91,7 +91,13 @@
 
       <!-- Search Bar -->
       <div class="search-container">
-        <form class="search-form" id="searchForm" role="search">
+        <form
+          class="search-form"
+          id="searchForm"
+          role="search"
+          data-search-mode="redirect"
+          data-search-target="Products/products.html"
+        >
           <button type="submit" class="search-btn" aria-label="Search">
             <i class="bi bi-search"></i>
           </button>
@@ -121,13 +127,13 @@
           <i class="bi bi-person"></i><span>Account</span>
         </a>
         <a
-          href="/Favourites/favourites.html"
+          href="Favourites/favourites.html"
           class="nav-action"
           aria-label="Favourites"
         >
           <i class="bi bi-heart"></i><span>Favourites</span>
         </a>
-        <a href="/Cart/cart.html" class="nav-action" aria-label="Shopping Cart">
+        <a href="Cart/cart.html" class="nav-action" aria-label="Shopping Cart">
           <i class="bi bi-cart"></i><span>Cart</span>
         </a>
       </div>
